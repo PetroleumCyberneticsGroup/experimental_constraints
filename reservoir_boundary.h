@@ -1,24 +1,32 @@
 #ifndef FIELDOPT_RESERVOIRBOUNDARY_H
 #define FIELDOPT_RESERVOIRBOUNDARY_H
 
+#include <constraints/well_spline_constraint.h>
 #include "../constraints/constraint.h"
+#include "../constraints/well_spline_constraint.h"
+#include "../../Model/reservoir/grid/grid.h"
 
 namespace Optimization { namespace Constraints {
 
-        class ReservoirBoundary : public Constraint {
+class ReservoirBoundary : public Constraint, WellSplineConstraint
+{
+public:
+    ReservoirBoundary(const Utilities::Settings::Optimizer::Constraint &settings,
+                          Model::Properties::VariablePropertyContainer *variables, Model::Reservoir::Grid::Grid *grid);
 
+    // Constraint interface
+public:
+    bool CaseSatisfiesConstraint(Case *c);
+    void SnapCaseToConstraints(Case *c);
 
-        public:
-            ReservoirBoundary(const Utilities::Settings::Optimizer::Constraint &settings,
-                              Model::Properties::VariablePropertyContainer *variables);
+private:
+    int imin_, imax_, jmin_, jmax_, kmin_, kmax_;
+    QList<int> index_list_;
+    Model::Reservoir::Grid::Grid *grid_;
+    Well affected_well_;
+    QList<int> getListOfCellIndices();
 
-            virtual bool CaseSatisfiesConstraint(Case *c);
-
-            virtual void SnapCaseToConstraints(Case *c);
-
-
-        };
-
+};
     }
 }
 

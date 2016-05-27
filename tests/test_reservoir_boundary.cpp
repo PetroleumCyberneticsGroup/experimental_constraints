@@ -1,18 +1,26 @@
-#include <gtest/gtest.h>
+#include "../../tests/test_fixture_case.h"
 
-class ReservoirBoundaryTest : public ::testing::Test {
+namespace {
 
-protected:
-    virtual void TearDown() {
+    class ReservoirBoundaryTest : public CaseTestFixture {
 
+
+    public:
+        ReservoirBoundaryTest() { }
+
+    public:
+        virtual ~ReservoirBoundaryTest() { }
+
+        virtual void TearDown() {
+
+        }
+
+        virtual void SetUp() {
+
+        }
+    };
+
+    TEST_F(ReservoirBoundaryTest, Initialization) {
+        EXPECT_TRUE(true);
     }
-
-    virtual void SetUp() {
-
-    }
-
-};
-
-TEST_F(ReservoirBoundaryTest, Initialization) {
-    EXPECT_TRUE(true);
 }
