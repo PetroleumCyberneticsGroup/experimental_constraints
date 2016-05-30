@@ -2,12 +2,15 @@
 #define FIELDOPT_RESERVOIRBOUNDARY_H
 
 #include <constraints/well_spline_constraint.h>
-#include "../constraints/constraint.h"
-#include "../constraints/well_spline_constraint.h"
-#include "../../Model/reservoir/grid/grid.h"
+#include "Optimization/constraints/constraint.h"
+#include "Optimization/constraints/well_spline_constraint.h"
+#include "Model/reservoir/grid/grid.h"
 
 namespace Optimization { namespace Constraints {
 
+/*!
+ * \brief CLASS DESCRIPTION
+ */
 class ReservoirBoundary : public Constraint, WellSplineConstraint
 {
 public:
