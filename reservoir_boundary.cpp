@@ -16,7 +16,6 @@ ReservoirBoundary::ReservoirBoundary(const Utilities::Settings::Optimizer::Const
     kmax_ = settings.kmax;
     grid_ = grid;
     index_list_ = getListOfCellIndices();
-
     QList<QPair<QUuid, QString>> all_matching_vars = variables->GetContinousVariableNamesAndIdsMatchingSubstring(settings.name);
     affected_well_ = initializeWell(all_matching_vars, settings.well);
 }
@@ -34,7 +33,7 @@ ReservoirBoundary::ReservoirBoundary(const Utilities::Settings::Optimizer::Const
         bool heel_feasible = false;
         bool toe_feasible = false;
 
-        for (int ii=0; ii<index_list_.size(); ii++){
+        for (int ii=0; ii<index_list_.length(); ii++){
             if( WellIndexCalculator::GeometryFunctions::is_point_inside_cell(grid_->GetCell(index_list_[ii]), QVector3D(heel_x_val, heel_y_val, heel_z_val))){
                 heel_feasible = true;
             }
@@ -72,9 +71,9 @@ ReservoirBoundary::ReservoirBoundary(const Utilities::Settings::Optimizer::Const
     QList<int> ReservoirBoundary::getListOfCellIndices() {
         QList<int> index_list;
 
-        for (int i=imin_; i<imax_+1; i++){
-            for (int j=jmin_; j<jmax_+1; j++){
-                for (int k=kmin_; k<kmax_+1; k++){
+        for (int i=imin_; i<=imax_; i++){
+            for (int j=jmin_; j<=jmax_; j++){
+                for (int k=kmin_; k<=kmax_; k++){
                     index_list.append(grid_->GetCell(i,j,k).global_index());
                 }
             }
