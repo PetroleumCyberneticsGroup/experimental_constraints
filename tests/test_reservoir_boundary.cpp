@@ -2,7 +2,6 @@
 #include "Optimization/experimental_constraints/reservoir_boundary.h"
 #include "Optimization/tests/test_resource_cases.h"
 #include "Model/tests/test_resource_grids.h"
-#include "Utilities/settings/settings.h"
 #include "Utilities/tests/test_resource_settings.h"
 
 

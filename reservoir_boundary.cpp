@@ -1,6 +1,5 @@
 #include "reservoir_boundary.h"
 #include "WellIndexCalculator/well_constraint_projections/well_constraint_projections.h"
-#include "WellIndexCalculator/geometry_functions/geometryfunctions.h"
 
 namespace Optimization { namespace Constraints {
 
