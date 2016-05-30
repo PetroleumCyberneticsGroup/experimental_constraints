@@ -9,7 +9,11 @@
 namespace Optimization { namespace Constraints {
 
 /*!
- * \brief CLASS DESCRIPTION
+ * \brief The ReservoirBoundary class deals with imposing and checking reservoir boundary constraints
+ *
+ *  The class takes a boundary as input in the form of i,j and k min,max, i.e. a 'box' in
+ *  the grid i,j,k coordinates. It can check wether or not a single well is inside the
+ *  given box domain and, if needed, project the well onto the domain.
  */
 class ReservoirBoundary : public Constraint, WellSplineConstraint
 {
