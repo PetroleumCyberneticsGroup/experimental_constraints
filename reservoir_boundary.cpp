@@ -34,10 +34,16 @@ ReservoirBoundary::ReservoirBoundary(const Utilities::Settings::Optimizer::Const
         bool toe_feasible = false;
 
         for (int ii=0; ii<index_list_.length(); ii++){
-            if( WellIndexCalculator::GeometryFunctions::is_point_inside_cell(grid_->GetCell(index_list_[ii]), QVector3D(heel_x_val, heel_y_val, heel_z_val))){
+            if( WellIndexCalculator::GeometryFunctions::is_point_inside_cell(
+                    grid_->GetCell(index_list_[ii]),
+                    QVector3D(heel_x_val, heel_y_val, heel_z_val)
+            )){
                 heel_feasible = true;
             }
-            if( WellIndexCalculator::GeometryFunctions::is_point_inside_cell(grid_->GetCell(index_list_[ii]), QVector3D(toe_x_val, toe_y_val, toe_z_val))){
+            if( WellIndexCalculator::GeometryFunctions::is_point_inside_cell(
+                    grid_->GetCell(index_list_[ii]),
+                    QVector3D(toe_x_val, toe_y_val, toe_z_val)
+            )){
                 toe_feasible = true;
             }
         }
@@ -55,8 +61,16 @@ ReservoirBoundary::ReservoirBoundary(const Utilities::Settings::Optimizer::Const
         double toe_y_val = c->real_variables()[affected_well_.toe.y];
         double toe_z_val = c->real_variables()[affected_well_.toe.z];
 
-        Eigen::Vector3d projected_heel = WellIndexCalculator::WellConstraintProjections::well_domain_constraint_indices(Eigen::Vector3d(heel_x_val, heel_y_val, heel_z_val), grid_, index_list_);
-        Eigen::Vector3d projected_toe = WellIndexCalculator::WellConstraintProjections::well_domain_constraint_indices(Eigen::Vector3d(toe_x_val, toe_y_val, toe_z_val), grid_, index_list_);
+        Eigen::Vector3d projected_heel = WellIndexCalculator::WellConstraintProjections::well_domain_constraint_indices(
+                Eigen::Vector3d(heel_x_val, heel_y_val, heel_z_val),
+                grid_,
+                index_list_
+        );
+        Eigen::Vector3d projected_toe = WellIndexCalculator::WellConstraintProjections::well_domain_constraint_indices(
+                Eigen::Vector3d(toe_x_val, toe_y_val, toe_z_val),
+                grid_,
+                index_list_
+        );
 
         c->set_real_variable_value(affected_well_.heel.x, projected_heel(0));
         c->set_real_variable_value(affected_well_.heel.y, projected_heel(1));
@@ -65,16 +79,15 @@ ReservoirBoundary::ReservoirBoundary(const Utilities::Settings::Optimizer::Const
         c->set_real_variable_value(affected_well_.toe.x, projected_toe(0));
         c->set_real_variable_value(affected_well_.toe.y, projected_toe(1));
         c->set_real_variable_value(affected_well_.toe.z, projected_toe(2));
-
     }
 
     QList<int> ReservoirBoundary::getListOfCellIndices() {
         QList<int> index_list;
 
-        for (int i=imin_; i<=imax_; i++){
-            for (int j=jmin_; j<=jmax_; j++){
-                for (int k=kmin_; k<=kmax_; k++){
-                    index_list.append(grid_->GetCell(i,j,k).global_index());
+        for (int i = imin_; i <= imax_; i++){
+            for (int j = jmin_; j <= jmax_; j++){
+                for (int k = kmin_; k <= kmax_; k++){
+                    index_list.append(grid_->GetCell(i, j, k).global_index());
                 }
             }
         }
