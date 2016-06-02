@@ -7,7 +7,9 @@
 
 namespace {
 
-    class ReservoirBoundaryTest : public ::testing::Test, public TestResourceCases, public TestResourceGrids, public TestResourceSettings {
+    class ReservoirBoundaryTest : public ::testing::Test, public TestResources::TestResourceCases,
+                                  public TestResources::TestResourceGrids,
+                                  public TestResources::TestResourceSettings {
 
 
     public:
