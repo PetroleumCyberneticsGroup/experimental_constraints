@@ -5,7 +5,7 @@ namespace Optimization {
     namespace Constraints {
 
         ReservoirBoundary::ReservoirBoundary(const Utilities::Settings::Optimizer::Constraint &settings,
-                                             Model::Properties::VariablePropertyContainer *variables, Model::Reservoir::Grid::Grid *grid)
+                                             Model::Properties::VariablePropertyContainer *variables, Reservoir::Grid::Grid *grid)
         {
             imin_ = settings.imin;
             imax_ = settings.imax;

@@ -4,7 +4,7 @@
 #include <constraints/well_spline_constraint.h>
 #include "Optimization/constraints/constraint.h"
 #include "Optimization/constraints/well_spline_constraint.h"
-#include "Model/reservoir/grid/grid.h"
+#include "Reservoir/grid/grid.h"
 
 namespace Optimization {
     namespace Constraints {
@@ -20,7 +20,7 @@ namespace Optimization {
         {
         public:
             ReservoirBoundary(const Utilities::Settings::Optimizer::Constraint &settings,
-                              Model::Properties::VariablePropertyContainer *variables, Model::Reservoir::Grid::Grid *grid);
+                              Model::Properties::VariablePropertyContainer *variables, Reservoir::Grid::Grid *grid);
 
             // Constraint interface
         public:
@@ -30,7 +30,7 @@ namespace Optimization {
         private:
             int imin_, imax_, jmin_, jmax_, kmin_, kmax_;
             QList<int> index_list_;
-            Model::Reservoir::Grid::Grid *grid_;
+            Reservoir::Grid::Grid *grid_;
             Well affected_well_;
             QList<int> getListOfCellIndices();
 
