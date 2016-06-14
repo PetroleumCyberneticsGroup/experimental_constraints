@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "Optimization/experimental_constraints/reservoir_boundary.h"
 #include "Optimization/tests/test_resource_cases.h"
-#include "Model/tests/test_resource_grids.h"
+#include "Reservoir/tests/test_resource_grids.h"
 #include "Utilities/tests/test_resource_settings.h"
 
 
